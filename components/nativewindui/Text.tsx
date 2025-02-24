@@ -1,11 +1,12 @@
+import { Text as RNText } from 'react-native';
+
 import { VariantProps, cva } from 'class-variance-authority';
 import { cssInterop } from 'nativewind';
 import * as React from 'react';
-import { UITextView } from 'react-native-uitextview';
 
 import { cn } from '~/lib/cn';
 
-cssInterop(UITextView, { className: 'style' });
+cssInterop(RNText, { className: 'style' });
 
 const textVariants = cva('text-foreground', {
   variants: {
@@ -42,13 +43,10 @@ function Text({
   variant,
   color,
   ...props
-}: React.ComponentPropsWithoutRef<typeof UITextView> & VariantProps<typeof textVariants>) {
+}: React.ComponentPropsWithoutRef<typeof RNText> & VariantProps<typeof textVariants>) {
   const textClassName = React.useContext(TextClassContext);
   return (
-    <UITextView
-      className={cn(textVariants({ variant, color }), textClassName, className)}
-      {...props}
-    />
+    <RNText className={cn(textVariants({ variant, color }), textClassName, className)} {...props} />
   );
 }
 

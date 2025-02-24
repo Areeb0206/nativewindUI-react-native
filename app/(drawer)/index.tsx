@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import { Stack } from 'expo-router';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { FlashList } from '@shopify/flash-list';
@@ -43,6 +44,10 @@ import { Toggle } from '~/components/nativewindui/Toggle';
 
 import { useColorScheme } from '~/lib/useColorScheme';
 import { useHeaderSearchBar } from '~/lib/useHeaderSearchBar';
+import DropdownMenuScreen from '~/components/nativewind-ui/DropDown';
+import AdaptiveHeaderScreen from '~/components/nativewind-ui/SearchHeader';
+import AlertScreen from '~/components/nativewind-ui/Alert';
+import BadgeScreen from '~/components/nativewind-ui/Badge';
 
 export default function Home() {
   const searchValue = useHeaderSearchBar({ hideWhenScrolling: COMPONENTS.length === 0 });
@@ -205,6 +210,32 @@ const COMPONENTS: ComponentItem[] = [
   },
 
   {
+    name: 'DropDown',
+    component: function DropDownExample() {
+      return <DropdownMenuScreen />;
+    },
+  },
+
+  {
+    name: 'Adaptive Header Screen',
+    component: function AdaptiveHeader() {
+      return <AdaptiveHeaderScreen />;
+    },
+  },
+  {
+    name: 'AlertScreen',
+    component: function Alert() {
+      return <AlertScreen />;
+    },
+  },
+  {
+    name: 'BadgeScreen',
+    component: function Badge() {
+      return <BadgeScreen />;
+    },
+  },
+
+  {
     name: 'Toggle',
     component: function ToggleExample() {
       const [switchValue, setSwitchValue] = React.useState(true);
@@ -344,11 +375,7 @@ const COMPONENTS: ComponentItem[] = [
   {
     name: 'Selectable Text',
     component: function SelectableTextExample() {
-      return (
-        <Text uiTextView selectable>
-          Long press or double press this text
-        </Text>
-      );
+      return <Text selectable>Long press or double press this text</Text>;
     },
   },
 
